@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:dealsdray_1/utils/colors.dart';
 import 'package:dealsdray_1/utils/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -69,6 +70,7 @@ class _SignUpPageState extends State<SignUpPage> {
     return Form(
       key: _formKey,
       child: Scaffold(
+        backgroundColor: Mycolors.backgroundColor,
         resizeToAvoidBottomInset: true,
         body: Stack(
           children: [
@@ -104,14 +106,14 @@ class _SignUpPageState extends State<SignUpPage> {
                   Container(
                     margin: EdgeInsets.only(
                       top: 10, 
-                      right: MediaQuery.of(context).size.width / 2.5,
+                      right: MediaQuery.of(context).size.width / 3,
                     ),
                     child: "Let's Begin!".text.xl5.bold.make(),
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                      top: 25, 
-                      right: MediaQuery.of(context).size.width / 7,
+                      top: 15, 
+                      right: MediaQuery.of(context).size.width / 10-25,
                     ),
                     child: "Please enter your credentials to proceed"
                         .text
@@ -119,7 +121,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         .xl
                         .make(),
                   ),
-                  SizedBox(height: 30),
+                  SizedBox(height: 20),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
                     child: Theme(
@@ -147,27 +149,35 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                           SizedBox(height: 20),
                           TextFormField(
-                            controller: passwordController,
-                            obscureText: !_passwordVisible,
-                            cursorColor: Vx.red400,
-                            decoration: InputDecoration(
-                              suffixIcon: IconButton(
-                                onPressed: _togglePasswordVisibility,
-                                icon: Icon(
-                                  _passwordVisible ? CupertinoIcons.eye_slash_fill : CupertinoIcons.eye_fill,
-                                  color: Vx.gray500,
-                                ),
-                              ),
-                              hintText: 'Create Password',
-                              hintStyle: TextStyle(
-                                color: Vx.gray500, fontSize: 18, fontWeight: FontWeight.w400),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Vx.red300, width: 2),
-                              ),
-                            ),
-                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
-                            validator: (value) => value!.isEmpty ? 'Enter your password' : null,
-                          ),
+  controller: passwordController,
+  obscureText: !_passwordVisible,
+  cursorColor: Vx.red400,
+  decoration: InputDecoration(
+    suffixIcon: IconButton(
+      onPressed: _togglePasswordVisibility,
+      icon: Icon(
+        _passwordVisible ? CupertinoIcons.eye_slash_fill : CupertinoIcons.eye_fill,
+        color: Vx.gray500,
+      ),
+    ),
+    hintText: 'Create Password',
+    hintStyle: TextStyle(
+      color: Vx.gray500, fontSize: 18, fontWeight: FontWeight.w400),
+    focusedBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: Vx.red300, width: 2),
+    ),
+  ),
+  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+  validator: (value) {
+    if (value == null || value.isEmpty) {
+      return 'Enter your password';
+    } else if (value.length < 8) {
+      return 'Password must be at least of length 8';
+    }
+    return null;
+  },
+),
+
                           SizedBox(height: 20),
                           TextFormField(
                             controller: referralController,
@@ -187,7 +197,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(right: 16, top: MediaQuery.of(context).size.height / 4 - 90),
+                    margin: EdgeInsets.only(right: 16, top: MediaQuery.of(context).size.height / 5 - 90),
                     alignment: Alignment.bottomRight,
                     child: SizedBox(
                       height: 72,
@@ -197,8 +207,8 @@ class _SignUpPageState extends State<SignUpPage> {
                             ? CircularProgressIndicator(color: Vx.white)
                             : Icon(CupertinoIcons.arrow_right, color: Vx.white),
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(Vx.red500),
-                          shape: MaterialStateProperty.all(
+                          backgroundColor: WidgetStatePropertyAll(Vx.red500),
+                          shape: WidgetStatePropertyAll(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),

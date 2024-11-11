@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
+import 'package:dealsdray_1/utils/colors.dart';
 import 'package:dealsdray_1/utils/otpsend.dart';
 import 'package:dealsdray_1/utils/routes.dart';
 import 'package:flutter/cupertino.dart';
@@ -72,6 +73,7 @@ class _LoginScreenPageState extends State<LoginScreenPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Mycolors.backgroundColor,
       body: Stack(
         children: [
           Positioned(
@@ -88,100 +90,106 @@ class _LoginScreenPageState extends State<LoginScreenPage> {
               splashColor: Vx.red200,
             ),
           ),
-          Column(
-            children: [
-              Container(
-                margin: EdgeInsets.only(top: 15),
-                child: Center(
-                  child: SizedBox(
-                    height: 230,
-                    child: Image.asset(
-                      'lib/assets/img/dealsdray_img.png',
-                      opacity: const AlwaysStoppedAnimation(.5),
-                    ),
-                  ),
-                ),
-              ),
-              AnimatedToggleSwitch<bool>.size(
-                current: defSwitchValue,
-                values: const [false, true],
-                indicatorSize: const Size.fromWidth(105),
-                customIconBuilder: (context, local, global) => Text(
-                  local.value ? 'Email' : 'Phone',
-                  style: TextStyle(
-                    color: Color.lerp(Vx.black, Vx.white, local.animationValue),
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                iconAnimationType: AnimationType.onHover,
-                style: ToggleStyle(
-                  backgroundColor: Vx.gray300,
-                  indicatorColor: Vx.red500,
-                  borderColor: Colors.transparent,
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                selectedIconScale: 1,
-                onChanged: (value) => setState(() => defSwitchValue = value),
-              ),
-              Container(
-                margin: EdgeInsets.only(top: 40, right: MediaQuery.of(context).size.width / 5),
-                child: "Glad to see you!".text.xl5.bold.make(),
-              ),
-              Container(
-                margin: EdgeInsets.only(top: 25, right: MediaQuery.of(context).size.width / 4),
-                child: "Please provide your phone number".text.color(Vx.gray500).xl.make(),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 16, right: 16, top: 80),
-                child: Theme(
-                  data: Theme.of(context).copyWith(
-                    textSelectionTheme: TextSelectionThemeData(
-                      selectionColor: Vx.red200,
-                      selectionHandleColor: Vx.red400,
-                    ),
-                  ),
-                  child: TextField(
-                    controller: _phoneController,
-                    keyboardType: TextInputType.number,
-                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                    maxLength: 10,
-                    cursorColor: Vx.red400,
-                    decoration: InputDecoration(
-                      counterText: "",
-                      hintText: 'Phone',
-                      hintStyle: TextStyle(color: Vx.gray500, fontSize: 18, fontWeight: FontWeight.w400),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Vx.red300, width: 2),
-                      ),
-                      contentPadding: EdgeInsets.only(bottom: 15),
-                    ),
-                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.w400),
-                  ),
-                ),
-              ),
-              Opacity(
-                opacity: isButtonEnabled ? 1.0 : 0.5,
-                child: Container(
-                  margin: EdgeInsets.only(top: 50, left: 5, right: 5),
-                  width: MediaQuery.of(context).size.width,
-                  height: 70,
-                  child: ElevatedButton(
-                    onPressed: (){
-                      isButtonEnabled ? sendOtp : null;
-                      Navigator.pushNamed(context, Myroutes.otpScreenRoute);
-                    },
-                    child: "SEND CODE".text.color(Vx.white).bold.xl2.make(),
-                    style: ButtonStyle(
-                      backgroundColor: WidgetStatePropertyAll(Vx.red500),
-                      shape: WidgetStatePropertyAll(
-                        RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: 15),
+                  child: Center(
+                    child: SizedBox(
+                      height: 230,
+                      child: Image.asset(
+                        'lib/assets/img/dealsdray_img.png',
+                        opacity: const AlwaysStoppedAnimation(.5),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
+                AnimatedToggleSwitch<bool>.size(
+                  current: defSwitchValue,
+                  values: const [false, true],
+                  indicatorSize: const Size.fromWidth(105),
+                  customIconBuilder: (context, local, global) => Text(
+                    local.value ? 'Email' : 'Phone',
+                    style: TextStyle(
+                      color: Color.lerp(Vx.black, Vx.white, local.animationValue),
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  iconAnimationType: AnimationType.onHover,
+                  style: ToggleStyle(
+                    backgroundColor: Vx.gray300,
+                    indicatorColor: Vx.red500,
+                    borderColor: Colors.transparent,
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  selectedIconScale: 1,
+                  onChanged: (value) => setState(() => defSwitchValue = value),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 40, right: MediaQuery.of(context).size.width/2.5-100),
+                  child: "Glad to see you!".text.xl5.bold.make(),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 25, right: MediaQuery.of(context).size.width / 4-30),
+                  child: "Please provide your phone number".text.color(Vx.gray500).xl.make(),
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 16, right: 16, top: 80),
+                  child: Theme(
+                    data: Theme.of(context).copyWith(
+                      textSelectionTheme: TextSelectionThemeData(
+                        selectionColor: Vx.red200,
+                        selectionHandleColor: Vx.red400,
+                      ),
+                    ),
+                    child: TextField(
+                      controller: _phoneController,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                      maxLength: 10,
+                      cursorColor: Vx.red400,
+                      decoration: InputDecoration(
+                        counterText: "",
+                        hintText: 'Phone',
+                        hintStyle: TextStyle(color: Vx.gray500, fontSize: 18, fontWeight: FontWeight.w400),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Vx.red300, width: 2),
+                        ),
+                        contentPadding: EdgeInsets.only(bottom: 15),
+                      ),
+                      style: TextStyle(fontSize: 30, fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                ),
+                Opacity(
+                  opacity: isButtonEnabled ? 1.0 : 0.5,
+                  child: Container(
+                    margin: EdgeInsets.only(top: 50, left: 5, right: 5),
+                    width: MediaQuery.of(context).size.width,
+                    height: 70,
+                    child: ElevatedButton(
+                      onPressed: (){
+                        isButtonEnabled ? sendOtp : null;
+                        Navigator.pushNamed(
+                          context,
+                          Myroutes.otpScreenRoute,
+                          arguments: _phoneController.text, // Passing the phone number
+                        );
+                      },
+                      child: "SEND CODE".text.color(Vx.white).bold.xl2.make(),
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStatePropertyAll(Vx.red500),
+                        shape: WidgetStatePropertyAll(
+                          RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),

@@ -17,10 +17,10 @@ class CarouselLoading extends StatelessWidget {
             children: [
               Container(
                 margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                height: 180, // Adjust this height as needed
+                height: 170, // Adjust this height as needed
                 child: PageView.builder(
                   itemCount: 3, // Total number of images in the carousel
-                  controller: PageController(viewportFraction: 0.8, initialPage: 1),
+                  controller: PageController(viewportFraction: 0.85, initialPage: 1),
                   itemBuilder: (context, index) {
                     return Container(
                       margin: const EdgeInsets.symmetric(horizontal: 5),
@@ -73,7 +73,7 @@ class CarouselLoading extends StatelessWidget {
                     children: [
                       IconButton(
                         onPressed: () {},
-                        icon: Image.asset('lib/assets/img/cat_mobile.png', scale: 0.75),
+                        icon: Image.asset('lib/assets/img/cat_mobile.png', scale: 0.8),
                       ),
                       "Mobile".text.lg.make(),
                     ],
@@ -82,7 +82,7 @@ class CarouselLoading extends StatelessWidget {
                     children: [
                       IconButton(
                         onPressed: () {},
-                        icon: Image.asset('lib/assets/img/cat_lap.png', scale: 0.75),
+                        icon: Image.asset('lib/assets/img/cat_lap.png', scale: 0.8),
                       ),
                       "Laptop".text.lg.make(),
                     ],
@@ -91,7 +91,7 @@ class CarouselLoading extends StatelessWidget {
                     children: [
                       IconButton(
                         onPressed: () {},
-                        icon: Image.asset('lib/assets/img/cat_camera.png', scale: 0.75),
+                        icon: Image.asset('lib/assets/img/cat_camera.png', scale: 0.8),
                       ),
                       "Camera".text.lg.make(),
                     ],
@@ -100,7 +100,7 @@ class CarouselLoading extends StatelessWidget {
                     children: [
                       IconButton(
                         onPressed: () {},
-                        icon: Image.asset('lib/assets/img/cat_led.png', scale: 0.75),
+                        icon: Image.asset('lib/assets/img/cat_led.png', scale: 0.8),
                       ),
                       "LED".text.lg.make(),
                     ],
@@ -130,7 +130,7 @@ class CarouselLoading extends StatelessWidget {
                       height: 300, // Adjust this height as needed
                       child: PageView.builder(padEnds: false,
                         itemCount: 4, // Total number of images in the carousel
-                        controller: PageController(viewportFraction: 0.6, initialPage: 0),
+                        controller: PageController(viewportFraction: 0.7, initialPage: 0),
                         itemBuilder: (context, index) {
                           return Container(
                             margin: const EdgeInsets.symmetric(horizontal: 5),

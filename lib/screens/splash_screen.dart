@@ -2,11 +2,13 @@ import 'dart:convert';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:dealsdray_1/screens/homepage.dart';
 import 'package:dealsdray_1/screens/login_page.dart';
+import 'package:dealsdray_1/utils/colors.dart';
 import 'package:dealsdray_1/utils/routes.dart';
 import 'package:dealsdray_1/utils/splashapi.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:http/http.dart' as http;
+import 'package:velocity_x/velocity_x.dart';
 
 class SplashScreenPage extends StatefulWidget {
   const SplashScreenPage({super.key});
@@ -63,6 +65,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Mycolors.backgroundColor,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
