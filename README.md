@@ -1,3 +1,8 @@
+![Screenshot_1731356105](https://github.com/user-attachments/assets/0c36b65d-2dab-46e9-9605-fdcaed9e5ed1)
+![Screenshot_1731356064](https://github.com/user-attachments/assets/7ffa02f3-10ac-4eca-a1b7-9e04f6849480)
+![Screenshot_1731356059](https://github.com/user-attachments/assets/0b44c008-688d-4e0a-a607-06922008601c)
+![Screenshot_1731356043](https://github.com/user-attachments/assets/7eadfdaa-b969-4cc0-b47a-116e6be4aac1)
+![Screenshot_1731356040](https://github.com/user-attachments/assets/d5a3863b-c032-4a0e-93cb-a00c52852d12)
 # Dealsdray Flutter App
 
 Welcome to the Dealsdray Flutter App repository! This app is developed using Flutter and leverages multiple APIs to deliver a seamless and engaging user experience. Dealsdray’s app enables users to explore products and make informed decisions, featuring intuitive navigation and customized widgets to enhance functionality and accessibility.
